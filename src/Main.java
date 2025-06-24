@@ -46,6 +46,7 @@ public class Main {
                     listarmascotas(mascotas);
                     break;
                 case 3:
+                    eliminarMascota(sc,mascotas);
                     break;
                 case 4:
                     continuar = false;
@@ -116,6 +117,20 @@ public class Main {
             default:
                 throw new IllegalArgumentException("ERR: Tipo de mascota invalido");
         }
-    }
 
+
+
+
+    }
+    //metodo para eliminar mascota
+    public static void eliminarMascota(Scanner sc, ArrayList<Mascota> mascotas){
+        listarmascotas(mascotas);
+        int indice=-1;
+        System.out.println("Ingrese la mascota que desea eliminar: ");
+        indice = sc.nextInt();
+        mascotas.remove(indice);
+        System.out.println("La mascota ha sido eliminada con exito");
+        }
 }
+
+
