@@ -55,28 +55,45 @@ public class Main {
             }
         }
     }
+    //metodo para añadir una mascora, pide el scanner para ingresar datos y la lista de mascotas
     public static void añadirMascota(Scanner sc,ArrayList<Mascota> mascotas) throws InputMismatchException,IllegalArgumentException,LimiteMascotasException {
+        //el sistema no permite añadir mas mascotas si ya hay 10 en la lista
         if(mascotas.size()==10){
             throw new LimiteMascotasException("ERR: No se pueden tener mas de 10 mascotas");
         }
-        sc.nextLine();
+        //si hay menos de 10, esto es lo que se ejecuta:
+
+        //inicializacion de las variables para crear el objeto de mascota
         int edad=0;
         String nombre="";
+
+        System.out.println("-----------------------------------------");
+        //limpia el bufer para evitar errores al ingresar datos
+        sc.nextLine();
+
+        //se piden los datos y se añaden a la variable correspondiente
         System.out.print("Ingrese el nombre de la mascota: ");
         nombre = sc.nextLine();
         System.out.print("Ingrese la edad de la mascota: ");
         edad = sc.nextInt();
+        //si la edad es menor a 1 (0 o negativo) se lanza la excepcion y se cancela la creacion de mascota
         if(edad<1){
             throw new IllegalArgumentException("ERR: La edad de la mascota no puede ser negativo");
         }
+        //pide el tipo de mascota segun las instrucciones dadas:
         System.out.println("Ingrese el tipo de mascota:\n1-Perro\n2-Gato");
+        System.out.print("Seleccione una opcion:");
         int tipo = sc.nextInt();
+
+        //crea y añade a la lista el tipo de mascota correspondiente a la opcion seleccionada
         switch(tipo){
             case 1:
                 mascotas.add(new Perro(nombre,edad));
+                System.out.println("El perro "+nombre+" ha sido agregado con exito");
                 break;
             case 2:
                 mascotas.add(new Gato(nombre,edad));
+                System.out.println("El gato "+nombre+" ha sido agregado con exito");
                 break;
             default:
                 throw new IllegalArgumentException("ERR: Tipo de mascota invalido");
