@@ -93,10 +93,14 @@ public class Main {
         //se piden los datos y se añaden a la variable correspondiente
         System.out.print("Ingrese el nombre de la mascota: ");
         nombre = sc.nextLine();
+        if(nombre.trim().equals("")||nombre==null){
+            throw new IllegalArgumentException("ERR: El nombre de la mascota no puede ser vacio");
+        }
         System.out.print("Ingrese la edad de la mascota: ");
         edad = sc.nextInt();
+        System.out.println(edad);
         //si la edad es menor a 1 (0 o negativo) se lanza la excepcion y se cancela la creacion de mascota
-        if(edad<1 ){
+        if(edad<=0){
             throw new IllegalArgumentException("ERR: La edad de la mascota no puede ser negativo");
         }else if(edad>50){
             throw new IllegalArgumentException("ERR: La edad ingresada no puede ser mayor que 50");
@@ -129,6 +133,7 @@ public class Main {
         } else {
             listarMascotas(mascotas);
             int indice = -1;
+            sc.nextLine();
             System.out.println("Ingrese la mascota que desea eliminar: ");
             indice = sc.nextInt();
             try {
