@@ -103,7 +103,7 @@ public class Main {
         if(edad<=0){
             throw new IllegalArgumentException("ERR: La edad de la mascota no puede ser negativo");
         }else if(edad>50){
-            throw new IllegalArgumentException("ERR: La edad ingresada no puede ser mayor que 50");
+            throw new IllegalArgumentException("ERR: La edad ingresada no puede ser mayor que 50 (¿¡En serio existe un perro o un gato TAN viejo!?");
         }
         //pide el tipo de mascota segun las instrucciones dadas:
         System.out.println("Ingrese el tipo de mascota:\n1-Perro\n2-Gato");
@@ -114,11 +114,15 @@ public class Main {
         switch(tipo){
             case 1:
                 mascotas.add(new Perro(nombre,edad));
+                System.out.println("----------------------------------------");
                 System.out.println("El perro "+nombre+" ha sido agregado con exito");
+                System.out.println("----------------------------------------");
                 break;
             case 2:
                 mascotas.add(new Gato(nombre,edad));
+                System.out.println("----------------------------------------");
                 System.out.println("El gato "+nombre+" ha sido agregado con exito");
+                System.out.println("----------------------------------------");
                 break;
             default:
                 throw new IllegalArgumentException("ERR: Tipo de mascota invalido");
@@ -138,10 +142,12 @@ public class Main {
             indice = sc.nextInt();
             try {
                 mascotas.remove(indice);
+                System.out.println("----------------------------------------");
                 System.out.println("La mascota ha sido eliminada con exito");
+                System.out.println("----------------------------------------");
             }catch (IndexOutOfBoundsException e){
                 System.out.println("----------------------------------------");
-                System.out.println(e.getMessage());
+                System.out.println("ERR: No existe una mascota registrada con ese indice");
                 System.out.println("----------------------------------------");
             }
         }
