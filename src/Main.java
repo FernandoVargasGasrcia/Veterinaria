@@ -43,7 +43,7 @@ public class Main {
                     }
                     break;
                 case 2:
-                    listarmascotas(mascotas);
+                    listarMascotas(mascotas);
                     break;
                 case 3:
                     eliminarMascota(sc,mascotas);
@@ -58,7 +58,7 @@ public class Main {
             }
         }
     }
-    public static void listarmascotas(ArrayList<Mascota> mascotas) {
+    public static void listarMascotas(ArrayList<Mascota> mascotas) {
         if (mascotas.isEmpty()) {
             System.out.println("-----------------------------------------");
             System.out.println("Lista de mascotas vacía.");
@@ -67,7 +67,7 @@ public class Main {
             System.out.println("-----------------------------------------");
             System.out.println("Mascotas registradas:");
             for (int i = 0; i < mascotas.size(); i++) {
-                Mascota mascota = mascotas.get(i);
+                Mascota mascota = mascotas.get(i+1);
                 System.out.println(i + " - " + mascota); // toString() se usa aquí
                 mascota.emitirSonido(); // Llama al sonido según si es Perro o Gato
             }
@@ -96,8 +96,10 @@ public class Main {
         System.out.print("Ingrese la edad de la mascota: ");
         edad = sc.nextInt();
         //si la edad es menor a 1 (0 o negativo) se lanza la excepcion y se cancela la creacion de mascota
-        if(edad<1){
+        if(edad<1 ){
             throw new IllegalArgumentException("ERR: La edad de la mascota no puede ser negativo");
+        }else if(edad>50){
+            throw new IllegalArgumentException("ERR: La edad ingresada no puede ser mayor que 50");
         }
         //pide el tipo de mascota segun las instrucciones dadas:
         System.out.println("Ingrese el tipo de mascota:\n1-Perro\n2-Gato");
@@ -117,20 +119,28 @@ public class Main {
             default:
                 throw new IllegalArgumentException("ERR: Tipo de mascota invalido");
         }
-
-
-
-
     }
     //metodo para eliminar mascota
-    public static void eliminarMascota(Scanner sc, ArrayList<Mascota> mascotas){
-        listarmascotas(mascotas);
-        int indice=-1;
-        System.out.println("Ingrese la mascota que desea eliminar: ");
-        indice = sc.nextInt();
-        mascotas.remove(indice);
-        System.out.println("La mascota ha sido eliminada con exito");
+    public static void eliminarMascota(Scanner sc, ArrayList<Mascota> mascotas) {
+        if (mascotas.size() == 0) {
+            System.out.println("-----------------------------------------");
+            System.out.println("Lista de mascotas vacia.");
+            System.out.println("----------------------------------------");
+        } else {
+            listarMascotas(mascotas);
+            int indice = -1;
+            System.out.println("Ingrese la mascota que desea eliminar: ");
+            indice = sc.nextInt();
+            try {
+                mascotas.remove(indice);
+                System.out.println("La mascota ha sido eliminada con exito");
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("----------------------------------------");
+                System.out.println(e.getMessage());
+                System.out.println("----------------------------------------");
+            }
         }
+    }
 }
 
 
