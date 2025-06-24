@@ -67,7 +67,7 @@ public class Main {
             System.out.println("-----------------------------------------");
             System.out.println("Mascotas registradas:");
             for (int i = 0; i < mascotas.size(); i++) {
-                Mascota mascota = mascotas.get(i+1);
+                Mascota mascota = mascotas.get(i);
                 System.out.println(i + " - " + mascota); // toString() se usa aquí
                 mascota.emitirSonido(); // Llama al sonido según si es Perro o Gato
             }
