@@ -42,7 +42,6 @@ public class Main {
                     }
                     break;
                 case 2:
-                    System.out.println(mascotas.size());
                     break;
                 case 3:
                     break;
