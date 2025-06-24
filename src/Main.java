@@ -98,7 +98,6 @@ public class Main {
         }
         System.out.print("Ingrese la edad de la mascota: ");
         edad = sc.nextInt();
-        System.out.println(edad);
         //si la edad es menor a 1 (0 o negativo) se lanza la excepcion y se cancela la creacion de mascota
         if(edad<=0){
             throw new IllegalArgumentException("ERR: La edad de la mascota no puede ser negativo");
