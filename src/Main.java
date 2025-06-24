@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //lista en la cual se gurdaran las mascotas
+        //lista en la cual se guardaran las mascotas
         ArrayList<Mascota> mascotas = new ArrayList<Mascota>(10);
 
         //objeto con el cual le pasaremos datos al sistema
@@ -31,6 +31,7 @@ public class Main {
                 case 1:
                     break;
                 case 2:
+
                     break;
                 case 3:
                     break;
