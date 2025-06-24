@@ -26,6 +26,7 @@ public class Main {
                 sc.nextLine();
             }
 
+
             //ejecuta el caso correspondiente con la opcion seleccionada
             switch (opcion){
                 case 1:
@@ -42,6 +43,7 @@ public class Main {
                     }
                     break;
                 case 2:
+                    listarmascotas(mascotas);
                     break;
                 case 3:
                     break;
@@ -53,6 +55,22 @@ public class Main {
                     System.out.println("ERR: Opcion no valida, intente nuevamente");
                     System.out.println("-----------------------------------------");
             }
+        }
+    }
+    public static void listarmascotas(ArrayList<Mascota> mascotas) {
+        if (mascotas.isEmpty()) {
+            System.out.println("-----------------------------------------");
+            System.out.println("Lista de mascotas vacía.");
+            System.out.println("-----------------------------------------");
+        } else {
+            System.out.println("-----------------------------------------");
+            System.out.println("Mascotas registradas:");
+            for (int i = 0; i < mascotas.size(); i++) {
+                Mascota mascota = mascotas.get(i);
+                System.out.println(i + " - " + mascota); // toString() se usa aquí
+                mascota.emitirSonido(); // Llama al sonido según si es Perro o Gato
+            }
+            System.out.println("-----------------------------------------");
         }
     }
     //metodo para añadir una mascora, pide el scanner para ingresar datos y la lista de mascotas

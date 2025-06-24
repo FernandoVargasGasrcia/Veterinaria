@@ -30,5 +30,12 @@ public abstract class Mascota {
     }
 
     public abstract String emitirSonido();
-
+    public String toString(){
+        String info="";
+        info+="Nombre: "+nombre+"\n";
+        info+="Edad: "+edad+"\n";
+        info+="Tipo: "+tipo+"\n";
+        info+="Sonido: "+emitirSonido()+"\n";
+        return info;
+    }
 }
