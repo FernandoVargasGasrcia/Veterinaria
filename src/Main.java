@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IllegalArgumentException {
+    public static void main(String[] args) {
         //lista en la cual se gurdaran las mascotas
         ArrayList<Mascota> mascotas = new ArrayList<Mascota>(10);
 
@@ -31,12 +31,8 @@ public class Main {
             switch (opcion){
                 case 1:
                     try {
-                        añadirMascota(sc,mascotas);
-                    }catch (LimiteMascotasException e){
-                        System.out.println("-----------------------------------------");
-                        System.out.println(e.getMessage());
-                        System.out.println("-----------------------------------------");
-                    }catch (IllegalArgumentException e){
+                        aniadirMascota(sc,mascotas);
+                    }catch (LimiteMascotasException | IllegalArgumentException e){
                         System.out.println("-----------------------------------------");
                         System.out.println(e.getMessage());
                         System.out.println("-----------------------------------------");
@@ -75,7 +71,7 @@ public class Main {
         }
     }
     //metodo para añadir una mascora, pide el scanner para ingresar datos y la lista de mascotas
-    public static void añadirMascota(Scanner sc,ArrayList<Mascota> mascotas) throws InputMismatchException,IllegalArgumentException,LimiteMascotasException {
+    public static void aniadirMascota(Scanner sc,ArrayList<Mascota> mascotas) throws InputMismatchException,IllegalArgumentException,LimiteMascotasException {
         //el sistema no permite añadir mas mascotas si ya hay 10 en la lista
         if(mascotas.size()==10){
             throw new LimiteMascotasException("ERR: No se pueden tener mas de 10 mascotas");
@@ -93,7 +89,7 @@ public class Main {
         //se piden los datos y se añaden a la variable correspondiente
         System.out.print("Ingrese el nombre de la mascota: ");
         nombre = sc.nextLine();
-        if(nombre.trim().equals("")||nombre==null){
+        if(nombre.trim().isEmpty()){
             throw new IllegalArgumentException("ERR: El nombre de la mascota no puede ser vacio");
         }
         System.out.print("Ingrese la edad de la mascota: ");
@@ -129,7 +125,7 @@ public class Main {
     }
     //metodo para eliminar mascota
     public static void eliminarMascota(Scanner sc, ArrayList<Mascota> mascotas) {
-        if (mascotas.size() == 0) {
+        if (mascotas.isEmpty()) {
             System.out.println("-----------------------------------------");
             System.out.println("Lista de mascotas vacia.");
             System.out.println("----------------------------------------");
